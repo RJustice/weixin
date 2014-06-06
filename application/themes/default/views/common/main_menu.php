@@ -53,6 +53,14 @@
       </li>
       <li class="<?php if($controller == 'menu'){ echo 'active';}?>">
         <a href="<?php echo site_url('menu');?>">自定义菜单</a>
+      </li>      
+      <li class="<?php if($controller == 'wevent'){echo 'active';}?> dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">事件设置 <b class="caret"></b></a>
+        <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+        <ul class="dropdown-menu">
+          <li class="<?php  if($method == 'lists'){echo 'active';}?>"><a href="<?php echo site_url('wevent');?>">事件列表</a></li>
+          <li class="<?php  if($method == 'create'){echo 'active';}?>"><a href="<?php echo site_url('wevent/create');?>">新增事件</a></li>
+        </ul>
       </li>
     </ul>
   </div><!-- /.navbar-collapse -->

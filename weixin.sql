@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2014-05-30 17:30:53
+Date: 2014-06-06 17:28:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -155,4 +155,37 @@ CREATE TABLE `weixin_member` (
 
 -- ----------------------------
 -- Records of weixin_member
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `wevent`
+-- ----------------------------
+DROP TABLE IF EXISTS `wevent`;
+CREATE TABLE `wevent` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `wid` varchar(32) NOT NULL,
+  `wevent_cat` int(11) NOT NULL,
+  `event_name` varchar(100) NOT NULL,
+  `event_type` varchar(50) NOT NULL,
+  `event_params` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wevent
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `wevent_cat`
+-- ----------------------------
+DROP TABLE IF EXISTS `wevent_cat`;
+CREATE TABLE `wevent_cat` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `name` varchar(50) NOT NULL,
+  `wid` varchar(32) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wevent_cat
 -- ----------------------------

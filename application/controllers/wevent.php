@@ -5,7 +5,7 @@ class Wevent extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if_logged();
+        is_logged();
     }
 
     public function index()
@@ -27,7 +27,7 @@ class Wevent extends CI_Controller {
         if($this->form_validation->run() == FALSE){
             $this->template->build('wevent_create_form');
         }else{
-            
+            $this->load->model('');
         }
     }
 

@@ -9,6 +9,9 @@ if(!function_exists('cat_select')){
         $ci = & get_instance();
         $ci->load->model('m_cat');
         $cats = $ci->m_cat->lists();
+        if(!$cats){
+            $cats = array();
+        }
         $select = '<select '.$attr.'>';
         if($selected == 1){
             $select .= '<option value="0" selected >请选择</option>';
@@ -30,6 +33,9 @@ if( ! function_exists('default_cat_artiles_select')){
         $ci = & get_instance();
         $ci->load->model('m_article');
         $articles = $ci->m_article->ajaxListsByCid(1);
+        if(!$articles){
+            $articles = array();
+        }
         $select = '<select '.$attr.'>';
         foreach($articles as $article){
             $select .= '<option value="'.$article['id'].'" data-img="'.$article['img'].'">'.$article['title'].'</option>';
@@ -48,6 +54,9 @@ if( ! function_exists('fun_menus_select')){
         $ci = & get_instance();
         $ci->load->model('m_funmenu');
         $articles = $ci->m_funmenu->getLists();
+        if(!$articles){
+            $articles = array();
+        }
         $select = '<select '.$attr.'>';
         foreach($articles as $article){
             $select .= '<option value="'.$article['id'].'" data-img="'.$article['img'].'">'.$article['title'].'</option>';
