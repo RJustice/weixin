@@ -2,6 +2,10 @@
 
 class Weixin extends CI_Controller {
 
+    function index(){
+        is_logged();
+    }
+
     function article(){
         $id = $this->uri->segment(3);
         $this->load->model('m_article');

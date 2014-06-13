@@ -16,7 +16,7 @@ class M_User extends CI_Model {
         if($rs->num_rows() > 0){
             $user = $rs->row_array();
             $session_data['user'] = $user;
-            $q = "select id,alias,weixin_name,weixin_id,flag,is_service from weixin_account where uid = {$user['id']} order by id asc";
+            $q = "select id,alias,weixin_name,weixin_id,flag,is_service,app_key,app_secret from weixin_account where uid = {$user['id']} order by id asc";
             $r = $this->db->query($q);
             if($r->num_rows() > 0){
                 $session_data['weixin'] = $r->row_array();

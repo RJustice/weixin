@@ -7,7 +7,7 @@
                 <?php echo cat_select(array('name'=>'cid','id'=>'cid','class'=>'select-block'),$article['cid']);?>
             </div>
             <div class="form-group">
-                <input type="text" name="title" id="title" class="form-control" value="<?php echo set_value('title',$article['title']);?>" placeholder="Article Title (*)" />
+                <input type="text" name="title" id="title" data-tip="title" data-tip-title="文章标题(*)" class="form-control form-tip" value="<?php echo set_value('title',$article['title']);?>" placeholder="Article Title (*)" />
             </div>
             <div class="form-group">
                 <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">

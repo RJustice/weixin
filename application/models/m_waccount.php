@@ -19,6 +19,9 @@ class M_Waccount extends CI_Model {
         $insert_data['flag'] = md5(time());
         $insert_data['uid'] = $this->session->userdata('user.id');
         $this->db->insert('weixin_account',$insert_data);
+        $d = elements(array('id','alias','weixin_name','weixin_id','flag','is_service','app_key','app_secret'),$insert_data);
+        $d['id'] = $this->db->insert_id();
+        $this->_update_session('create',$d);
         return $this->db->insert_id();
     }
 
@@ -53,11 +56,46 @@ class M_Waccount extends CI_Model {
         $this->load->helper('array');
         $update_data = elements(array('alias','token','weixin_name','weixin_id','is_service','app_key','app_secret'),$data);
         $this->db->update('weixin_account',$update_data,array('id'=>$data['id'],'uid'=>$this->session->userdata('user.id')));
+        $this->_update_session('edit',array('id'=>$data['id']));
     }
 
     function del($id){
         $query = "delete from weixin_account where id = ? and uid = ?";
         $this->db->query($query,array($id,$this->session->userdata('user.id')));
+        $this->_update_session('del',array('id'=>$id));
+    }
+
+    function _update_session($type,$data = array()){
+        switch($type){
+            case 'create':
+                if($this->session->userdata('weixin_num') == 0){
+                    $session_data['weixin_num'] = 1;
+                    $session_data['weixin'] = $data;
+                    $this->session->set_userdata($session_data);
+                }
+                break;
+            case 'edit':
+                if($data['id'] == $this->session->userdata('weixin.id')){
+                    $query = "select id,alias,weixin_name,weixin_id,flag,is_service,app_key,app_secret from weixin_account where id={$data['id']}";
+                    $rs = $this->db->query($query);
+                    $session_data['weixin'] = $rs->row_array();
+                    $this->session->set_userdata($session_data);
+                }
+                break;
+            case 'del':
+                if($data['id'] == $this->session->userdata('weixin.id')){
+                    $query = "select id,alias,weixin_name,weixin_id,flag,is_service,app_key,app_secret from weixin_account where uid = {$this->session->userdata('user.id')} order by id asc limit 1";
+                    $rs = $this->db->query($query);
+                    if($rs->num_rows() > 0){
+                        $session_data['weixin_num'] = 1;
+                        $session_data['weixin'] = $rs->row_array();
+                    }else{
+                        $session_data['weixin_num'] = 0;
+                    }
+                    $this->session->set_userdata($session_data);   
+                }
+                break;
+        }
     }
 }
 

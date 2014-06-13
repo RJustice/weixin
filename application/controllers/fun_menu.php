@@ -21,9 +21,9 @@ class Fun_menu extends CI_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(array(
             array(
-                'field' => 'a',
-                'label' => 'b',
-                'rules' => 'required'
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'trim|required'
             ),
         ));
         if($this->form_validation->run() == FALSE){

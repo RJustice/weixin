@@ -10,8 +10,17 @@ class M_Wsubscribe extends CI_Model {
         
     }
 
-    
+    function getSubscribeById($id){
+        
+    }
 
+    function getNormalSubscribeEvent(){
+        
+    }
+
+    function getQRSubscribeEvent(){
+        
+    }
 }
 
 /* End of file m_wsubscribe.php */

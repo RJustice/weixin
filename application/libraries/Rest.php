@@ -83,10 +83,10 @@ class REST
 
     public function server($rest_server){
         $this->rest_server = $rest_server;
-        if (substr($this->rest_server, -1, 1) != '/')
-        {
-            $this->rest_server .= '/';
-        }
+        // if (substr($this->rest_server, -1, 1) != '/')
+        // {
+        //     $this->rest_server .= '/';
+        // }
     }
 
     public function get($uri, $params = array(), $format = NULL)

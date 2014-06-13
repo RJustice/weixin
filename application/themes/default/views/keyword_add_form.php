@@ -5,7 +5,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-8">
-                        <input type="text" name="keyword" value="<?php echo set_value('keyword');?>" id="keyword" class="form-control" placeholder="Keyword(*)" required>
+                        <input type="text" name="keyword" value="<?php echo set_value('keyword');?>" id="keyword" class="form-control form-tip"  data-tip="keyword" data-tip-title="关键词(*)" placeholder="Keyword(*)" required>
                     </div>
                     <div class="col-md-4">
                         <label class="checkbox" for="is_fuzzy">
